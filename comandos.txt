@@ -1,0 +1,4 @@
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install monitoring-stack prometheus-community/kube-prometheus-stack --namespace monitoring --values values.yaml
+helm upgrade monitoring-stack prometheus-community/kube-prometheus-stack --namespace monitoring --values values.yaml
