@@ -4,9 +4,13 @@ lo primero es instalar istio con los siguientes comandos
 
 
 **helm repo add istio https://istio-release.storage.googleapis.com/charts**
+
 **helm repo update**
+
 **kubectl create namespace istio-system**
+
 **helm install istio-base istio/base -n istio-system**
+
 
 
 para este comando existe el archivo istio-values.yaml en el cual puedes configurar los recursos que le vas a dar al sidecar de istio. en la ruta del yaml
@@ -49,9 +53,13 @@ a nivel del pod(osea a nivel de template) en los deployments.
 Luego de esto instalamos el stack de observabilidad con los siguientes comandos
 
 **kubectl create namespace monitoring**
+
 **helm repo add prometheus-community https://prometheus-community.github.io/helm-charts**
+
 **helm repo update**
+
 **helm install monitoring-stack prometheus-community/kube-prometheus-stack --namespace monitoring --values values.yaml**
+
 
 en el archivo values esta modificado para que se cree un volumen persistente para prometheus. 
 tambien se configura la clave para el grafana en el campo:
@@ -94,7 +102,9 @@ Con este stack puedes adicionar tableros a grafana de forma dinamica, en este or
 ```
 
 **kubectl apply -f monitoring-stack-istio-request.yaml**
+
 **kubectl apply -f monitoring-stack-istio-workload.yaml**
+
 
 los tableros que yo he adicionado son:
 
